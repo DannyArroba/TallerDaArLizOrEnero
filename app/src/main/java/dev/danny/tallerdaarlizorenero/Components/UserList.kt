@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Add
@@ -59,6 +61,8 @@ fun UserScreen(navController: NavHostController) {
 
         Column(
             modifier = Modifier.padding(paddingValues)
+                .verticalScroll(rememberScrollState())
+
         ) {
             ItemContact( " Luis Perez", Icons.Default.Edit,Icons.Default.Call, navController)
             HorizontalDivider()
