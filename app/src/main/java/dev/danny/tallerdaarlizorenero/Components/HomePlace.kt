@@ -23,6 +23,7 @@ import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -69,14 +70,13 @@ fun HomePlace(navController: NavController) {
                     .padding(16.dp),
                 contentAlignment = Alignment.Center
             ) {
-                IconButton(onClick = { navController.popBackStack() }) {
+
                     Icon(
                         imageVector = Icons.Default.Face,
                         contentDescription = "Go to back",
-                        modifier = Modifier.size(100.dp),
-                        // Ajusta el tamaño si es necesario
+                        modifier = Modifier.size(100.dp), // Aumenta el tamaño del icono aquí
                     )
-                }
+
             }
 
             Row (
@@ -166,7 +166,7 @@ fun HomePlace(navController: NavController) {
 
 
                 ElevatedButton(
-                    onClick = { navController.navigate("param") },
+                    onClick = { navController.navigate("userlist") },
                     modifier = Modifier.padding(16.dp).width(300.dp),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color.Red

@@ -9,6 +9,7 @@ import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.filled.PersonPin
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -60,13 +61,12 @@ fun ParamScreen2(navController: NavHostController, name: String?) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 // Icono central
-                IconButton(onClick = { navController.popBackStack() }) {
                     Icon(
-                        imageVector = Icons.Default.Face,
+                        imageVector = Icons.Default.PersonPin,
                         contentDescription = "Go to back",
-                        modifier = Modifier.size(64.dp)
+                        modifier = Modifier.size(100.dp)
                     )
-                }
+
 
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -103,14 +103,14 @@ fun ParamScreen2(navController: NavHostController, name: String?) {
             ) {
                 FloatingActionButton(
                     onClick = { navController.navigate("home") },
-                    containerColor = Color.White,
+                    containerColor = Color.LightGray,
                     modifier = Modifier
                         .padding(16.dp)
                         .width(200.dp)
                 ) {
                     Text(
                         text = "Regresar",
-                        color = Color.Magenta,
+                        color = Color.Black,
                         fontSize = 18.sp,
                         textAlign = TextAlign.Center
                     )
