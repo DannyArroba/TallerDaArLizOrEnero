@@ -146,7 +146,9 @@ fun HomePlace(navController: NavController) {
 
                     ) {
                     Text("Lista usuarios",
-                        fontSize = 24.sp)
+                        fontSize = 24.sp,
+                        color = Color.Black
+                    )
                 }
 
                 ElevatedButton(
@@ -157,7 +159,9 @@ fun HomePlace(navController: NavController) {
                     ),
                 ) {
                     Text("Lista de platos",
-                        fontSize = 24.sp)
+                        fontSize = 24.sp,
+                        color = Color.Black
+                    )
                 }
 
 
@@ -169,7 +173,9 @@ fun HomePlace(navController: NavController) {
                     ),
                 ) {
                     Text("Envio Parametros",
-                        fontSize = 24.sp)
+                        fontSize = 24.sp,
+                        color = Color.Black
+                    )
                 }
             }
             // Botón para ir a la pantalla de CheckBox

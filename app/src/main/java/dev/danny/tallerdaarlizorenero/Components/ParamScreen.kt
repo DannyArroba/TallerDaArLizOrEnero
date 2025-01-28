@@ -25,12 +25,13 @@ fun ParamScreen(navController: NavHostController, name: String?) {
     Scaffold(
         topBar = {
             TopAppBar(
-
-                title = { Text("PARAMETROS",
-                    color = Color.Black,
-                    fontSize = 30.sp,
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Center
+                title = {
+                    Text(
+                        "PARAMETROS",
+                        color = Color.Black,
+                        fontSize = 30.sp,
+                        modifier = Modifier.fillMaxWidth(),
+                        textAlign = TextAlign.Center
                     )
                 },
                 navigationIcon = {
@@ -44,53 +45,56 @@ fun ParamScreen(navController: NavHostController, name: String?) {
             )
         }
     ) { paddingValues ->
-        Column(
+        Box(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState()),
-            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(
+            // Contenido principal desplazable
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
-                contentAlignment = Alignment.Center
+                    .padding(16.dp)
+                    .verticalScroll(rememberScrollState()),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                // Icono principal
                 IconButton(onClick = { navController.popBackStack() }) {
                     Icon(
                         imageVector = Icons.Default.Face,
                         contentDescription = "Go to back",
-                        modifier = Modifier.size(64.dp),
-                        // Ajusta el tamaño si es necesario
+                        modifier = Modifier.size(64.dp)
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Iconos asociados
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Edit,
+                        contentDescription = "Icono Editar",
+                        tint = Color.Green,
+                        modifier = Modifier.size(48.dp)
+                    )
+                    Text(
+                        text = name ?: "Nombre no disponible",
+                        fontSize = 30.sp,
+                        color = Color.Black
+                    )
+                    Icon(
+                        imageVector = Icons.Default.Call,
+                        contentDescription = "Icono Llamar",
+                        tint = Color.Black,
+                        modifier = Modifier.size(48.dp)
                     )
                 }
             }
-            // Iconos asociados
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Edit,
-                    contentDescription = "Icono Editar",
-                    tint = Color.Green,
-                    modifier = Modifier.size(48.dp)
-                )
-                Text(
-                    text = name ?: "Nombre no disponible",
-                    fontSize = 30.sp,
-                    color = Color.Black
-                )
-                Icon(
-                    imageVector = Icons.Default.Call,
-                    contentDescription = "Icono Llamar",
-                    tint = Color.Black,
-                    modifier = Modifier.size(48.dp)
-                )
-            }
 
-
+            // Botón flotante en la parte inferior centrado
             Box(
                 modifier = Modifier
                     .fillMaxSize(),
@@ -99,13 +103,14 @@ fun ParamScreen(navController: NavHostController, name: String?) {
                 FloatingActionButton(
                     onClick = { navController.navigate("home") },
                     containerColor = Color.White, // Fondo blanco del botón
-                    modifier = Modifier.padding(16.dp).width(200.dp)// Espaciado desde el borde inferior
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .width(200.dp) // Ancho personalizado
                 ) {
                     Text(
                         text = "Regresar",
                         color = Color.Magenta, // Texto en color magenta
                         fontSize = 18.sp,
-
                         textAlign = TextAlign.Center
                     )
                 }

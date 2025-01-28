@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -36,125 +37,114 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
-@Composable
+
 @OptIn(ExperimentalMaterial3Api::class)
+@Composable
 fun MenuScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
                 navigationIcon = {
-                    IconButton(
-                        onClick = { navController.popBackStack() })
-                    {
+                    IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = "Go to Back"
                         )
                     }
                 },
-                title = {
-                    Text(text = "Listado de Platos")
-                })
+                title = { Text(text = "Listado de Platos") }
+            )
         }
     ) { paddingValues ->
-        Column(modifier = Modifier.padding(paddingValues)
-            .verticalScroll(rememberScrollState())
-
+        Box(
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize()
         ) {
-            var checkedValue by remember {
-                mutableStateOf(false)
-            }
-            Row (
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(16.dp).clickable {
-                    checkedValue = !checkedValue
-                }
+            // Contenido desplazable
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .verticalScroll(rememberScrollState())
+                    .padding(16.dp)
             ) {
-
-                Checkbox(
-                    checked = checkedValue,
-                    onCheckedChange = {
-                        checkedValue = it
-                    }
-                )
-                Text(text = "Seco de pollo")
-            }
-            HorizontalDivider()
-            var checkedValue2 by remember {
-                mutableStateOf(false)
-            }
-            Row (
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(16.dp).clickable {
-                    checkedValue = !checkedValue
+                var checkedValue by remember { mutableStateOf(false) }
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .clickable { checkedValue = !checkedValue }
+                ) {
+                    Checkbox(
+                        checked = checkedValue,
+                        onCheckedChange = { checkedValue = it }
+                    )
+                    Text(text = "Seco de pollo")
                 }
-            ) {
+                HorizontalDivider()
 
-                Checkbox(
-                    checked = checkedValue2,
-                    onCheckedChange = {
-                        checkedValue2 = it
-                    }
-                )
-                Text(text = "Seco de carne")
-            }
-            HorizontalDivider()
-            var checkedValue3 by remember {
-                mutableStateOf(false)
-            }
-            Row (
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(16.dp).clickable {
-                    checkedValue = !checkedValue
+                var checkedValue2 by remember { mutableStateOf(false) }
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .clickable { checkedValue2 = !checkedValue2 }
+                ) {
+                    Checkbox(
+                        checked = checkedValue2,
+                        onCheckedChange = { checkedValue2 = it }
+                    )
+                    Text(text = "Seco de carne")
                 }
-            ) {
+                HorizontalDivider()
 
-                Checkbox(
-                    checked = checkedValue3,
-                    onCheckedChange = {
-                        checkedValue3 = it
-                    }
-                )
-                Text(text = "Tilapia Asada")
-            }
-            HorizontalDivider()
-            var checkedValue4 by remember {
-                mutableStateOf(false)
-            }
-            Row (
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(16.dp).clickable {
-                    checkedValue = !checkedValue
+                var checkedValue3 by remember { mutableStateOf(false) }
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .clickable { checkedValue3 = !checkedValue3 }
+                ) {
+                    Checkbox(
+                        checked = checkedValue3,
+                        onCheckedChange = { checkedValue3 = it }
+                    )
+                    Text(text = "Tilapia Asada")
                 }
-            ) {
+                HorizontalDivider()
 
-                Checkbox(
-                    checked = checkedValue4,
-                    onCheckedChange = {
-                        checkedValue4 = it
-                    }
-                )
-                Text(text = "Maito de pescado")
-            }
-            HorizontalDivider()
-            var checkedValue5 by remember {
-                mutableStateOf(false)
-            }
-            Row (
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(16.dp).clickable {
-                    checkedValue = !checkedValue
+                var checkedValue4 by remember { mutableStateOf(false) }
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .clickable { checkedValue4 = !checkedValue4 }
+                ) {
+                    Checkbox(
+                        checked = checkedValue4,
+                        onCheckedChange = { checkedValue4 = it }
+                    )
+                    Text(text = "Maito de pescado")
                 }
-            ) {
+                HorizontalDivider()
 
-                Checkbox(
-                    checked = checkedValue5,
-                    onCheckedChange = {
-                        checkedValue5 = it
-                    }
-                )
-                Text(text = "Guanta al Horno")
+                var checkedValue5 by remember { mutableStateOf(false) }
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .clickable { checkedValue5 = !checkedValue5 }
+                ) {
+                    Checkbox(
+                        checked = checkedValue5,
+                        onCheckedChange = { checkedValue5 = it }
+                    )
+                    Text(text = "Guanta al Horno")
+                }
+                HorizontalDivider()
             }
+
+            // Botón flotante en la parte inferior
             Box(
                 modifier = Modifier
                     .fillMaxSize(),
@@ -162,21 +152,19 @@ fun MenuScreen(navController: NavController) {
             ) {
                 FloatingActionButton(
                     onClick = { navController.popBackStack() },
-                    containerColor = Color.White, // Fondo blanco del botón
-                    modifier = Modifier.padding(16.dp).width(200.dp)// Espaciado desde el borde inferior
+                    containerColor = Color.White,
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .width(200.dp)
                 ) {
                     Text(
                         text = "Regresar",
-                        color = Color.Magenta, // Texto en color magenta
+                        color = Color.Magenta,
                         fontSize = 18.sp,
-
                         textAlign = TextAlign.Center
                     )
                 }
             }
-
-
         }
-
     }
 }
